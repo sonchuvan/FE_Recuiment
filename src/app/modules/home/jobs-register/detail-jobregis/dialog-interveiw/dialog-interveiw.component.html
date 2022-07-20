@@ -1,17 +1,6 @@
 <h1>Đặt lịch phỏng vấn</h1>
     <form class="pb-5" [formGroup]="formInterview">
         <input type="hidden"  formControlName="id">
-        <!-- <div class="form-row mb-3">
-            <div class="form-group col-md-10">
-                <div class="row">
-                    <label class="label col-4 col-form-label ">Ngày hẹn phỏng vấn</label>
-                    <div class="col-8">
-                        <p-calendar  formControlName="dateInterview" [showIcon]="true" [minDate]="currentDate" inputId="time"></p-calendar>
-                        <mat-error *ngIf="formInterview.controls.dateInterview.errors?.required && formInterview.get('dateInterview').touched">Không được để trống</mat-error>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="form-row mb-3">
           <div class="form-group col-md-15">
               <div class="row">

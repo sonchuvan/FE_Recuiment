@@ -38,6 +38,7 @@ export class JobComponent implements OnInit {
   name = "";
   isSearch = false;
   jobChild;
+  isChangeSize = false;
   pdf=false;
   constructor(
     private jobService: JobService,
@@ -59,8 +60,11 @@ export class JobComponent implements OnInit {
     this.listJob = data.jobs;
     this.pageNo = data.pageNo;
     this.pageSize = data.pageSize;
-    this.totalJob = data.totalElements;
+
+    this.totalJob = data.totalElements;    
+    if(!this.isChangeSize){
     this.totalPage = data.totalPages;
+    }
     this.totalPageNumRe = Array(this.totalPage)
       .fill(1)
       .map((x, i) => i);
@@ -165,6 +169,7 @@ export class JobComponent implements OnInit {
   }
 
   changePageSize(e) {
+    this.isChangeSize=true;
     if (!this.isSearch) {
       this.jobService
         .getAllJob(this.pageNo, e.target.value, this.sortBy, this.sortDir)

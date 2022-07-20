@@ -15,7 +15,7 @@
                                 <button *ngIf="statusJobRegister?.code==='Chờ duyệt'" (click)="statusChange('Chờ phỏng vấn')" type="button" class="btn btn-outline-secondary mr-4"  data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
                                     Xét duyệt
                                 </button>
-                                <button *ngIf="statusJobRegister?.code==='Chờ duyệt'||statusJobRegister?.code==='Chờ phỏng vấn'" (click)="openDialogReject()" type="button" class="btn btn-outline-info mr-4"  data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
+                                <button *ngIf="statusJobRegister?.code==='Chờ duyệt'||statusJobRegister?.code==='Chờ phỏng vấn'||statusJobRegister?.code==='Đang phỏng vấn'" (click)="openDialogReject()" type="button" class="btn btn-outline-info mr-4"  data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
                                     Từ chối ứng viên
                                 </button>
                                 <button *ngIf="statusJobRegister?.code==='Ứng viên bị từ chối'||statusJobRegister?.code==='Ứng viên đã hủy ứng'" (click)="openDialogReason()"  type="button" class="btn btn-outline-warning mr-4"  data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">

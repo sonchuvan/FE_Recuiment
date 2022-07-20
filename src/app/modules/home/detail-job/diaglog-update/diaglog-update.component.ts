@@ -104,7 +104,14 @@ export class DiaglogUpdateComponent implements OnInit,DoCheck {
     });
   }
   onSubmit() {
-    this.formJob.patchValue({ userCreate: this.userCreateName });
+    const date1=new Date(this.formJob.controls.dueDate.value);
+    const date2=new Date(this.formJob.controls.startDate.value);
+  
+    this.formJob.patchValue({ 
+      userCreate: this.userCreateName,
+      dueDate: date1,
+      startDate: date2,
+     });
     this.jobService.addNewJob(this.formJob.value).subscribe((data) => {
       if (data != null) {
         this.showToaster('Cập nhật tin tuyển dụng thành công','success');

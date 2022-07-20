@@ -26,6 +26,7 @@ export class JobsRegisterComponent implements OnInit {
   isClick = false;
   isSearch = false;
   name='';
+  isChangeSize=false;
   constructor(
     private jobRegisterService: JobRegisterService,
     private router: Router,
@@ -53,6 +54,7 @@ export class JobsRegisterComponent implements OnInit {
     this.pageNo = data.pageNo;
     this.pageSize = data.pageSize;
     this.totalJob = data.totalElements;
+    if(!this.isChangeSize)
     this.totalPage = data.totalPages;
     this.totalPageNumRe = Array(this.totalPage)
       .fill(1)
@@ -63,6 +65,7 @@ export class JobsRegisterComponent implements OnInit {
       .map((x, i) => i);
   }
   changePageSize(e) {
+    this.isChangeSize=true;
     if (!this.isSearch) {
       this.jobRegisterService
         .getAllJobRegister(this.pageNo, e.target.value, this.sortBy, this.sortDir)

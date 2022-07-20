@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import {  Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators,FormControl } from "@angular/forms";
 import { PrimeNGConfig } from "primeng/api";
 import { SessionService } from "../../../@core/services/session.service";
 import { User } from "./profile.model";
@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.primengConfig.ripple = true;
+    
     // this.getByUserName();
     this.getByUserName();
     this.initForm();
@@ -52,6 +52,7 @@ export class ProfileComponent implements OnInit {
   initForm() {
     this.formProfile = this.fb.group({
       id: [""],
+      file:[""],
       avatarName:[""],
       name: ["", Validators.required],
       email: ["", [Validators.required,Validators.email]],
@@ -66,12 +67,11 @@ export class ProfileComponent implements OnInit {
   getByUserName() {
     const userinfo = JSON.parse(localStorage.getItem("auth-user"));
     const name = userinfo.sub;
-    console.log(name);
+  
 
     this.profileService.getProfile(name).subscribe((res) => {
       this.updateForm(res);
       this.user=res;
-      console.log(this.user)
       this.profileService.viewImage(this.user.avatarName).subscribe(data=>{
       this.postResponse = data;
         this.dbImage= "data:image/jpeg;base64," + this.postResponse.image;
@@ -130,7 +130,6 @@ export class ProfileComponent implements OnInit {
   }
 
   viewImage() {
-    console.log(this.user.avatarName)
     this.profileService.viewImage(this.user.avatarName).subscribe(data=>{
       this.postResponse = data;
         this.dbImage= "data:image/jpeg;base64," + this.postResponse.image;
@@ -146,7 +145,6 @@ export class ProfileComponent implements OnInit {
     this.formProfile.patchValue({
       birthDay:date
     });
-    console.log(this.formProfile.value);
     this.profileService.updateProfile(this.formProfile.value).subscribe(data=>{
       if(data!=null){
         this.showToaster("Cập nhật thành công","success")
