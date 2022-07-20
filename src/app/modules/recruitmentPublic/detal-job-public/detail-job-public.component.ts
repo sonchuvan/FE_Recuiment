@@ -81,7 +81,9 @@ export class DetaileJobPComponent implements OnInit {
     // eslint-disable-next-line eqeqeq
     if (this.jobId != null && this.checkloggin == true) {
       this.jobRegPObj.jobId = this.jobId;
-      this.jobRegPObj.pdf = this.profileP.value.pdf;
+      if (this.nameFIle != null) {
+        this.jobRegPObj.pdf = this.nameFIle;
+      }
       this.recruitmentService.registerJob(this.jobRegPObj).subscribe(
         (data) => {
           console.log(data);
@@ -91,7 +93,7 @@ export class DetaileJobPComponent implements OnInit {
               'Apple thành công, chúng tôi sẽ liên hệ sớm nhất.',
               'success',
             );
-            this.uploadFilePdf();
+            //this.uploadFilePdf();
             this.profileP.reset();
           } else {
             this.showToaster(

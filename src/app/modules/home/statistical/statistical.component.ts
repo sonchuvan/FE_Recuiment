@@ -33,6 +33,7 @@ export class StatisticalComponent implements OnInit {
   jobs: any;
   myDate = new Date();
   cValue = formatDate(this.myDate, "ddMMyyyy", "en-US");
+  dates = new Date();
 
   statisticalObj: Statistical = new Statistical();
   data: number[] = new Array();
@@ -49,8 +50,6 @@ export class StatisticalComponent implements OnInit {
     this.initForm();
     this.chart();
     this.getAllUserJe();
-    console.log(this.cValue);
-    console.log(this.seachData.value);
   }
 
   initForm() {
@@ -98,12 +97,10 @@ export class StatisticalComponent implements OnInit {
     this.statisticalService.getStatistical(this.seachData.value).subscribe(
       (res) => {
         this.statisticalObj = res[0];
-        console.log(this.statisticalObj);
-        
         this.total_apply = this.statisticalObj.total_apply;
         this.success_recruited_applicant =
           this.statisticalObj.success_recruited_applicant;
-          this.false_applicant = this.statisticalObj.false_applicant
+        this.false_applicant = this.statisticalObj.false_applicant;
         this.jobs = [
           {
             name: "Ứng tuyển",
@@ -119,7 +116,7 @@ export class StatisticalComponent implements OnInit {
           },
         ];
 
-          (this.data[0] = 5),
+        (this.data[0] = 5),
           (this.data[1] = 10),
           (this.data[2] = 11),
           (this.data[3] = 15),

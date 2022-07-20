@@ -109,6 +109,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.themeService.changeTheme(themeName);
   }
   getByUserName() {
+    // const userinfo = JSON.parse(localStorage.getItem("auth-user"));
+    // const name = userinfo.sub;
+    // this.profileService.getProfile(name).subscribe((res) => {
+    //   this.user=res;
+    //   this.profileService.viewImage(this.user.avatarName).subscribe(data=>{
+    //   this.postResponse = data;
+    //     this.profileService.picture= this.postResponse.image;
+    // })
+    //});
+
     const userinfo = JSON.parse(localStorage.getItem("auth-user"));
     const name = userinfo.sub;
     this.profileService.getProfile(name).subscribe((res) => {

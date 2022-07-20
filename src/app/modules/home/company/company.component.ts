@@ -19,6 +19,7 @@ export class CompanyComponent implements OnInit {
   companyDetail: FormGroup;
   idCompany = 1;
   companyD: Company = new Company();
+  date = new Date();
   constructor(
     private toaster: Toaster,
     private companyService: CompanyService,
