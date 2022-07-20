@@ -20,6 +20,7 @@ export class UserService {
   updateUserUrl: string;
   changthepass: string;
   deactivateUserUrl: string;
+  numberUserJe:string;
 
   constructor(private http: HttpClient) {
     this.addUserURL = "http://localhost:9090/api/admin/addUserJe";
@@ -28,6 +29,7 @@ export class UserService {
     this.getUserJeURL = "http://localhost:9090/api/admin/userSeach";
     this.updateUserUrl = "http://localhost:9090/api/admin/updateUser";
     this.changthepass = "http://localhost:9090/api/admin/changeThePassWord";
+    this.numberUserJe = "http://localhost:9090/api/public/number-user-je";
   }
 
   getAllUser(): Observable<Users[]> {
@@ -52,5 +54,8 @@ export class UserService {
 
   deactivateUser(user: Users): Observable<any> {
     return this.http.put<any>(this.deactivateUserUrl, user, httpOptions);
+  }
+  getNumberUserJe(): Observable<any> {
+    return this.http.get<any>(this.numberUserJe);
   }
 }

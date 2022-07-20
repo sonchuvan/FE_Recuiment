@@ -22,8 +22,11 @@ export class ListJeComponent implements OnInit {
   userObj: Users = new Users();
   userList: Users[];
   message = "";
-  pageNumber = [1, 2, 3, 4];
+  pageNumber: Number[] = new Array();
   click = false;
+  numberUser = 0;
+  pageN = 0;
+  
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,6 +37,21 @@ export class ListJeComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.seach();
+    this.numberUserJe();
+  }
+  numberUserJe(){
+    this.userService.getNumberUserJe().subscribe(
+      (data) => {
+        this.numberUser = data;
+        console.log(this.numberUser);
+        this.pageN = Math.floor(this.numberUser/6);
+        console.log(this.pageN);
+        for(let i=0; i<this.pageN;i++){
+            this.pageNumber[i]=i;
+        }
+        console.log(this.pageNumber);
+        
+      })
   }
   initForm() {
     this.userDetail = this.formBuilder.group({
@@ -92,6 +110,8 @@ export class ListJeComponent implements OnInit {
       this.userDetail.value.sortT = "DESC";
       this.userDetail.value.sortColum = "id";
     }
+    console.log(this.userDetail.value);
+    
     this.userService.getAllUserJeForm(this.userDetail.value).subscribe(
       (data) => {
         this.userList = data;

@@ -99,11 +99,11 @@ export class StatisticalComponent implements OnInit {
       (res) => {
         this.statisticalObj = res[0];
         console.log(this.statisticalObj);
-        
+
         this.total_apply = this.statisticalObj.total_apply;
         this.success_recruited_applicant =
           this.statisticalObj.success_recruited_applicant;
-          this.false_applicant = this.statisticalObj.false_applicant
+        this.false_applicant = this.statisticalObj.false_applicant;
         this.jobs = [
           {
             name: "Ứng tuyển",
@@ -119,7 +119,7 @@ export class StatisticalComponent implements OnInit {
           },
         ];
 
-          (this.data[0] = 5),
+        (this.data[0] = 5),
           (this.data[1] = 10),
           (this.data[2] = 11),
           (this.data[3] = 15),

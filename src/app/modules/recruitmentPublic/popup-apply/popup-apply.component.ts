@@ -65,9 +65,8 @@ export class PopupApply implements OnInit {
     // eslint-disable-next-line eqeqeq
     if (this.jobId != null && this.checkloggin == true) {
       this.jobRegPObj.jobId = this.jobId;
-      if (this.nameFIle != null) {
-        this.jobRegPObj.pdf = this.nameFIle;
-      }
+      this.jobRegPObj.pdf = this.nameFIle; 
+      this.uploadFilePdf(); 
       this.recruitmentService.registerJob(this.jobRegPObj).subscribe(
         (data) => {
           console.log(data);
@@ -77,7 +76,6 @@ export class PopupApply implements OnInit {
               "Apple thành công, chúng tôi sẽ liên hệ sớm nhất.",
               "success"
             );
-            this.uploadFilePdf();
             this.profileP.reset();
           } else {
             this.showToaster(
@@ -113,11 +111,6 @@ export class PopupApply implements OnInit {
         observe: "response",
       })
       .subscribe((response) => {
-        if (response.status === 200) {
-          alert("a");
-        } else {
-          alert("b");
-        }
       });
   }
 
