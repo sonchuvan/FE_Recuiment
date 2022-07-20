@@ -83,24 +83,10 @@
             />
             <label for="p-inputtext-lg">Mật khẩu</label>
             <!-- validators client -->
-            <mat-error
-              class="alert-danger"
-              *ngIf="
-                formLogin.controls.password.errors?.required &&
-                formLogin.touched
-              "
-            >
-              Không được để trống mật khẩu!<br />
-            </mat-error>
-            <mat-error
-              class="alert-danger"
-              *ngIf="
-                formLogin.controls.password.errors?.minlength &&
-                formLogin.touched
-              "
-            >
-              Mật khẩu Trên 6 ký tự<br />
-            </mat-error>
+            <br>
+            <div class="alert-danger" *ngIf="!formLogin.get('password').valid && formLogin.get('password').touched">
+              Vui lòng nhập mật khẩu có 8 - 16 kí tự và có ít nhất 1 chữ và 1 kí tự đặc biệt
+            </div>
             <mat-error
               class="alert-danger"
               *ngIf="

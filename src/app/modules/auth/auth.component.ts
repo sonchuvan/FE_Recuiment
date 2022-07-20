@@ -59,7 +59,7 @@ export class AuthComponent implements OnInit, DoCheck {
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(18),
-        //Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,16}$')
+        Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,16}$')
       ]),
     });
   }
